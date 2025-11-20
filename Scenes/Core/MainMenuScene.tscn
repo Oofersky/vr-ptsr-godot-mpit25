@@ -1,0 +1,89 @@
+[gd_scene load_steps=14 format=3 uid="uid://bo1qx6cmek6i"]
+
+[ext_resource type="Script" uid="uid://lskym4lg7kaq" path="res://Scenes/main.gd" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://3sdrvu0ak6mn" path="res://Scenes/UI/MainMenuPanel.tscn" id="3_jncur"]
+[ext_resource type="PackedScene" uid="uid://bb5ry6yjhmo7w" path="res://Scenes/Core/PulsingSphere.tscn" id="6_jncur"]
+[ext_resource type="PackedScene" uid="uid://b7nnb0g110wm6" path="res://Scenes/Core/PauseMenuScene.tscn" id="6_mf1jo"]
+[ext_resource type="PackedScene" uid="uid://civfhpte1xc8f" path="res://Scenes/UI/SafePlacePickerMenuPanel.tscn" id="7_mf1jo"]
+[ext_resource type="PackedScene" uid="uid://bw5r4anhcs586" path="res://Scenes/Player.tscn" id="7_ts00s"]
+[ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="8_85g3d"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_o5qli"]
+size = Vector2(10, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0wfyh"]
+albedo_color = Color(0.5283112, 0.3844076, 0.18240984, 1)
+heightmap_enabled = true
+heightmap_scale = 7.157
+uv1_scale = Vector3(10, 10, 10)
+uv1_offset = Vector3(10, 10, 0)
+uv2_scale = Vector3(10, 10, 10)
+uv2_offset = Vector3(10, 10, 0)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sugp2"]
+size = Vector3(15.030273, 0.30126953, 11.560303)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jyhfs"]
+ground_bottom_color = Color(1, 1, 1, 1)
+ground_horizon_color = Color(0.5734002, 0.65563726, 0.8200967, 1)
+
+[sub_resource type="Sky" id="Sky_tbgi4"]
+sky_material = SubResource("ProceduralSkyMaterial_jyhfs")
+
+[sub_resource type="Environment" id="Environment_tefeu"]
+background_mode = 2
+background_color = Color(1, 1, 1, 1)
+sky = SubResource("Sky_tbgi4")
+sky_rotation = Vector3(0, 0.6492625, 0)
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+
+[node name="MainMenuScene" type="Node3D"]
+script = ExtResource("1_o5qli")
+
+[node name="Floor" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.019037008, 0)
+mesh = SubResource("PlaneMesh_o5qli")
+surface_material_override/0 = SubResource("StandardMaterial3D_0wfyh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1694336, -0.27754664, -1.0240479)
+shape = SubResource("BoxShape3D_sugp2")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.063957594, 0.99795264, 0, -0.99795264, 0.063957594, 0, 8.229307, 2.3725038)
+visible = false
+light_color = Color(0.27667674, 0.6137129, 0.6281397, 1)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_tefeu")
+
+[node name="UI" parent="." instance=ExtResource("8_85g3d")]
+transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, 0, 1.3982178, -1.5787597)
+screen_size = Vector2(1280, 768)
+scene = ExtResource("3_jncur")
+viewport_size = Vector2(640, 368)
+throttle_fps = 60.0
+transparent = 2
+unshaded = true
+scene_properties_keys = PackedStringArray()
+
+[node name="Player" parent="." instance=ExtResource("7_ts00s")]
+
+[node name="PulsingSpheres" parent="." instance=ExtResource("6_jncur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8923459, 1.0118947, -1.9044985)
+
+[node name="PauseMenuScene" parent="." instance=ExtResource("6_mf1jo")]
+visible = false
+
+[node name="UI2" parent="." instance=ExtResource("8_85g3d")]
+transform = Transform3D(0.0006272973, 0, 0.0007787799, 0, 0.001, 0, -0.0007787799, 0, 0.0006272973, -1.0149946, 1.3982178, -1.0050161)
+screen_size = Vector2(1280, 768)
+scene = ExtResource("7_mf1jo")
+viewport_size = Vector2(640, 368)
+throttle_fps = 60.0
+transparent = 2
+unshaded = true
+scene_properties_keys = PackedStringArray("safe_place_picker_menu_panel.gd")

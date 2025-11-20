@@ -1,0 +1,124 @@
+[gd_scene load_steps=9 format=3 uid="uid://dvlhwrdgw64i0"]
+
+[ext_resource type="Script" uid="uid://7uinnfxtvpan" path="res://Scenes/UI/sud_menu_panel.gd" id="1_76l22"]
+[ext_resource type="Texture2D" uid="uid://cfoee2o0jbbsy" path="res://Pictures/sber.png" id="2_b2fnu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_76l22"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_etciq"]
+bg_color = Color(0.3005822, 0.2605643, 0.19921523, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_76l22"]
+color = Color(0.447093, 0.43122587, 0.33410975, 1)
+thickness = 8
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_b2fnu"]
+color = Color(0.14726195, 0.43826, 0.6135024, 1)
+thickness = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hoypf"]
+bg_color = Color(0.27983844, 0.653414, 0.23032466, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="Theme" id="Theme_0xr1c"]
+
+[node name="MainControlPanel" type="CanvasLayer"]
+script = ExtResource("1_76l22")
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 640.0
+offset_bottom = 368.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_76l22")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 0
+offset_top = 189.0
+offset_right = 640.0
+offset_bottom = 229.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 80
+
+[node name="Panel" type="Panel" parent="Panel/MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_etciq")
+
+[node name="HSlider" type="HSlider" parent="Panel/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 13.0
+offset_top = -8.0
+offset_right = -12.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/slider = SubResource("StyleBoxLine_76l22")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_b2fnu")
+max_value = 10.0
+step = 0.0
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -182.0
+offset_top = 63.0
+offset_right = 183.0
+offset_bottom = 86.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 26
+text = "Оцените ваше состояние на данный момент"
+
+[node name="Counter" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -296.0
+offset_top = -77.0
+offset_right = -259.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "0"
+
+[node name="MarginContainer2" type="MarginContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 567.0
+offset_top = 189.0
+offset_right = 628.0
+offset_bottom = 229.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="Confirm" type="Button" parent="Panel/MarginContainer2"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Panel/MarginContainer2/Confirm"]
+layout_mode = 0
+offset_right = 41.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_hoypf")
+
+[node name="TextureRect" type="TextureRect" parent="Panel/MarginContainer2/Confirm/Panel"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 1922.0
+offset_bottom = 1921.0
+scale = Vector2(0.02, 0.02)
+theme = SubResource("Theme_0xr1c")
+texture = ExtResource("2_b2fnu")

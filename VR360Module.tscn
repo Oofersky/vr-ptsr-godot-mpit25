@@ -1,0 +1,107 @@
+[gd_scene load_steps=19 format=3 uid="uid://dc7sekvpyym5c"]
+
+[ext_resource type="PackedScene" uid="uid://bw5r4anhcs586" path="res://Scenes/Player.tscn" id="1_rr2vk"]
+[ext_resource type="Script" uid="uid://dc83r4qg5m6v3" path="res://VRVideoPlayer.gd" id="1_vrmp8"]
+[ext_resource type="PackedScene" uid="uid://b7nnb0g110wm6" path="res://Scenes/Core/PauseMenuScene.tscn" id="3_eq7qw"]
+[ext_resource type="PackedScene" uid="uid://xc56y3kn245y" path="res://Scenes/UI/SelectSafePlaceMenuScene.tscn" id="4_i1ftf"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_vrmp8"]
+viewport_path = NodePath("VideoViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eq7qw"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_vrmp8")
+
+[sub_resource type="SphereMesh" id="SphereMesh_i1ftf"]
+flip_faces = true
+radius = 10.0
+height = 10.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_eq7qw"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_i1ftf"]
+viewport_path = NodePath("VideoViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fjf70"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_i1ftf")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lxlbw"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jncur"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mf1jo"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_f47x4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i1ftf"]
+albedo_texture = SubResource("CompressedTexture2D_lxlbw")
+metallic = 0.1
+metallic_texture = SubResource("CompressedTexture2D_jncur")
+roughness = 0.9
+roughness_texture = SubResource("CompressedTexture2D_f47x4")
+normal_enabled = true
+normal_scale = 3.0
+normal_texture = SubResource("CompressedTexture2D_mf1jo")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_fjf70"]
+size = Vector2(10, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h25dl"]
+albedo_color = Color(0.5283112, 0.3844076, 0.18240984, 1)
+heightmap_enabled = true
+heightmap_scale = 7.157
+uv1_scale = Vector3(10, 10, 10)
+uv1_offset = Vector3(10, 10, 0)
+uv2_scale = Vector3(10, 10, 10)
+uv2_offset = Vector3(10, 10, 0)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bk8ei"]
+size = Vector3(15.030273, 0.30126953, 11.560303)
+
+[node name="MainScene" type="Node3D"]
+script = ExtResource("1_vrmp8")
+
+[node name="Player" parent="." groups=["player"] instance=ExtResource("1_rr2vk")]
+
+[node name="Sphere" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_eq7qw")
+mesh = SubResource("SphereMesh_i1ftf")
+
+[node name="VideoViewport" type="SubViewport" parent="."]
+disable_3d = true
+size = Vector2i(1280, 720)
+render_target_update_mode = 4
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="VideoViewport"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VideoPlayer" type="VideoStreamPlayer" parent="VideoViewport/SubViewportContainer"]
+layout_mode = 2
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.777, 0, 0, 0, 1.777, 0, 0, 0, 1.777, 0, 1.5997448, -2.4725478)
+visible = false
+mesh = SubResource("QuadMesh_eq7qw")
+surface_material_override/0 = SubResource("StandardMaterial3D_fjf70")
+
+[node name="Floor" type="StaticBody3D" parent="."]
+transform = Transform3D(0.110506855, 0, 0, 0, 1, 0, 0, 0, 0.13049352, 0, 0, 0)
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.019037008, 0)
+material_override = SubResource("StandardMaterial3D_i1ftf")
+mesh = SubResource("PlaneMesh_fjf70")
+surface_material_override/0 = SubResource("StandardMaterial3D_h25dl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1694336, -0.27754664, -1.0240479)
+shape = SubResource("BoxShape3D_bk8ei")
+
+[node name="PauseMenuScene" parent="." instance=ExtResource("3_eq7qw")]
+visible = false
+
+[node name="SelectSafePlaceMenuScene" parent="." instance=ExtResource("4_i1ftf")]
+visible = false

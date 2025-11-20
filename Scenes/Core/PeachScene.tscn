@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://bpo4ybwtmbhi0"]
+
+[ext_resource type="PackedScene" uid="uid://bw5r4anhcs586" path="res://Scenes/Player.tscn" id="1_8e4dr"]
+[ext_resource type="PackedScene" uid="uid://wc5uhh4runto" path="res://╨Я╨╗╤П╨╢.fbx" id="2_ailh5"]
+[ext_resource type="PackedScene" uid="uid://b7nnb0g110wm6" path="res://Scenes/Core/PauseMenuScene.tscn" id="3_v6n6m"]
+[ext_resource type="PackedScene" uid="uid://xc56y3kn245y" path="res://Scenes/UI/SelectSafePlaceMenuScene.tscn" id="4_ailh5"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_uywwo"]
+size = Vector2(10, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0wy1v"]
+albedo_color = Color(0.5283112, 0.3844076, 0.18240984, 1)
+heightmap_enabled = true
+heightmap_scale = 7.157
+uv1_scale = Vector3(10, 10, 10)
+uv1_offset = Vector3(10, 10, 0)
+uv2_scale = Vector3(10, 10, 10)
+uv2_offset = Vector3(10, 10, 0)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_phn24"]
+size = Vector3(15.030273, 0.30126953, 11.560303)
+
+[node name="PeachScene" type="Node3D"]
+
+[node name="Floor" type="StaticBody3D" parent="." groups=["world_objects"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.283762, 0, -14.307682)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.019037008, 0)
+mesh = SubResource("PlaneMesh_uywwo")
+surface_material_override/0 = SubResource("StandardMaterial3D_0wy1v")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1694336, -0.27754664, -1.0240479)
+shape = SubResource("BoxShape3D_phn24")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.063957594, 0.99795264, 0, -0.99795264, 0.063957594, 0, 8.229307, 2.3725038)
+light_color = Color(0.27667674, 0.6137129, 0.6281397, 1)
+
+[node name="Пляж" parent="." instance=ExtResource("2_ailh5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.038552, -0.12476525, -1.4056282)
+
+[node name="PauseMenuScene" parent="." instance=ExtResource("3_v6n6m")]
+transform = Transform3D(-0.99993443, 0, -0.011449, 0, 1, 0, 0.011449, 0, -0.99993443, -10.8975525, 0.029922009, -14.001154)
+visible = false
+
+[node name="SelectSafePlaceMenuScene" parent="." instance=ExtResource("4_ailh5")]
+transform = Transform3D(-0.99971426, 0, -0.023908839, 0, 1, 0, 0.023908839, 0, -0.99971426, -10.921073, 0, -13.990543)
+visible = false
+
+[node name="Player" parent="." instance=ExtResource("1_8e4dr")]
+transform = Transform3D(-0.9994209, 0, 0.034027357, 0, 1, 0, -0.034027357, 0, -0.9994209, -10.895236, 0, -14.831275)

@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://b7nnb0g110wm6"]
+
+[ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="1_ripw0"]
+[ext_resource type="Script" uid="uid://brgfadwbmrfsb" path="res://Scenes/Core/PauseMenuScene.gd" id="1_t6do3"]
+[ext_resource type="PackedScene" uid="uid://i64u5k8g042k" path="res://Scenes/UI/PauseMenuPanel.tscn" id="3_t6do3"]
+[ext_resource type="PackedScene" uid="uid://dvlhwrdgw64i0" path="res://Scenes/UI/SUDMenuPanel.tscn" id="4_oo2u3"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_rx4b0"]
+flip_faces = true
+radius = 5.0
+height = 10.0
+
+[node name="PauseMenuScene" type="Node3D"]
+script = ExtResource("1_t6do3")
+
+[node name="UI" parent="." instance=ExtResource("1_ripw0")]
+transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, 0, 1.398, -0.8340169)
+screen_size = Vector2(1280, 768)
+collision_layer = 5242883
+scene = ExtResource("3_t6do3")
+viewport_size = Vector2(640, 368)
+throttle_fps = 60.0
+transparent = 2
+unshaded = true
+scene_properties_keys = PackedStringArray()
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_rx4b0")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.043352365, 1.5746112, 2.9176958)
+
+[node name="UI2" parent="." instance=ExtResource("1_ripw0")]
+transform = Transform3D(0.00048886484, 0, -0.00087235955, 0, 0.001, 0, 0.00087235955, 0, 0.00048886484, 1.0517273, 1.398, -0.2694782)
+screen_size = Vector2(1280, 768)
+collision_layer = 5242883
+scene = ExtResource("4_oo2u3")
+viewport_size = Vector2(640, 368)
+throttle_fps = 60.0
+transparent = 2
+unshaded = true
+scene_properties_keys = PackedStringArray("sud_menu_panel.gd")

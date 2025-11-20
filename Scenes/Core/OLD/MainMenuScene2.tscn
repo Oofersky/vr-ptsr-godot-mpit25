@@ -1,0 +1,115 @@
+[gd_scene load_steps=17 format=3 uid="uid://gxwcjlfjhew"]
+
+[ext_resource type="Script" uid="uid://lskym4lg7kaq" path="res://Scenes/main.gd" id="1_es48w"]
+[ext_resource type="PackedScene" uid="uid://bkv43ec6chcf3" path="res://addons/godot-xr-tools/hands/scenes/collision/collision_hand_left.tscn" id="2_2brfx"]
+[ext_resource type="PackedScene" uid="uid://bj1aas6kty3qx" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_physics_tac_glove_low.tscn" id="3_00qfx"]
+[ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="4_jjnmq"]
+[ext_resource type="PackedScene" uid="uid://c3uoohvnshach" path="res://addons/godot-xr-tools/hands/scenes/collision/collision_hand_right.tscn" id="5_625eo"]
+[ext_resource type="PackedScene" uid="uid://c2uvwvdlsfuep" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_physics_tac_glove_low.tscn" id="6_caec8"]
+[ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="7_8odmr"]
+[ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="8_gkn27"]
+[ext_resource type="PackedScene" uid="uid://rx6uwjjrkbct" path="res://Scenes/UI/game_ui.tscn" id="9_xmy26"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_85g3d"]
+radius = 0.25
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_o5qli"]
+size = Vector2(10, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0wfyh"]
+albedo_color = Color(0.1809156, 0.35564122, 0.16052163, 1)
+heightmap_enabled = true
+heightmap_scale = 7.157
+uv1_scale = Vector3(10, 10, 10)
+uv1_offset = Vector3(10, 10, 0)
+uv2_scale = Vector3(10, 10, 10)
+uv2_offset = Vector3(10, 10, 0)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sugp2"]
+size = Vector3(15.030273, 0.30126953, 11.560303)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jyhfs"]
+ground_bottom_color = Color(0.27622274, 0.48486233, 0.355641, 1)
+ground_horizon_color = Color(0.5726681, 0.6566146, 0.8176783, 1)
+
+[sub_resource type="Sky" id="Sky_tbgi4"]
+sky_material = SubResource("ProceduralSkyMaterial_jyhfs")
+
+[sub_resource type="Environment" id="Environment_tefeu"]
+background_mode = 2
+background_color = Color(0.89934653, 0.6972215, 0.149973, 1)
+sky = SubResource("Sky_tbgi4")
+sky_rotation = Vector3(0, 0.6492625, 0)
+ambient_light_source = 2
+ambient_light_color = Color(0.649276, 0.5333644, 0.11469933, 1)
+
+[node name="MainMenuScene" type="Node3D"]
+script = ExtResource("1_es48w")
+
+[node name="XROrigin3D" type="XROrigin3D" parent="."]
+
+[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
+
+[node name="LeftXRController3D" type="XRController3D" parent="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, -0.5)
+tracker = &"left_hand"
+
+[node name="CollisionHandLeft" parent="XROrigin3D/LeftXRController3D" instance=ExtResource("2_2brfx")]
+
+[node name="LeftPhysicsHand" parent="XROrigin3D/LeftXRController3D/CollisionHandLeft" instance=ExtResource("3_00qfx")]
+
+[node name="FunctionPointer" parent="XROrigin3D/LeftXRController3D/CollisionHandLeft/LeftPhysicsHand" instance=ExtResource("4_jjnmq")]
+show_laser = 2
+laser_length = 1
+show_target = true
+collision_mask = 4194304
+
+[node name="RightController3D" type="XRController3D" parent="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, -0.5)
+tracker = &"right_hand"
+
+[node name="CollisionHandRight" parent="XROrigin3D/RightController3D" instance=ExtResource("5_625eo")]
+
+[node name="RightPhysicsHand" parent="XROrigin3D/RightController3D/CollisionHandRight" instance=ExtResource("6_caec8")]
+
+[node name="FunctionPointer" parent="XROrigin3D/RightController3D/CollisionHandRight/RightPhysicsHand" instance=ExtResource("4_jjnmq")]
+show_laser = 2
+laser_length = 1
+show_target = true
+collision_mask = 4194304
+
+[node name="PlayerBody" parent="XROrigin3D" instance=ExtResource("7_8odmr")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/PlayerBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_85g3d")
+
+[node name="Floor" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+mesh = SubResource("PlaneMesh_o5qli")
+surface_material_override/0 = SubResource("StandardMaterial3D_0wfyh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1694336, -0.27754664, -1.0240479)
+shape = SubResource("BoxShape3D_sugp2")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.063957594, 0.99795264, 0, -0.99795264, 0.063957594, 0, 2.426746, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_tefeu")
+
+[node name="WorldEnvironment2" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_tefeu")
+
+[node name="Viewport2Din3D" parent="." instance=ExtResource("8_gkn27")]
+transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, 0, 1.5935082, -1.6855552)
+screen_size = Vector2(1280, 768)
+scene = ExtResource("9_xmy26")
+viewport_size = Vector2(640, 368.38)
+update_mode = 0
+transparent = 2
+unshaded = true
+scene_properties_keys = PackedStringArray()

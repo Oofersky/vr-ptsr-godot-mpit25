@@ -1,0 +1,84 @@
+[gd_scene load_steps=8 format=3 uid="uid://3sdrvu0ak6mn"]
+
+[ext_resource type="Script" uid="uid://ddehrmqh55myq" path="res://Scenes/UI/new_session.gd" id="1_fjp28"]
+[ext_resource type="Script" uid="uid://culdyn3fsppeg" path="res://Scenes/UI/exit.gd" id="2_bina8"]
+[ext_resource type="Script" uid="uid://bjtlkwqiaeck5" path="res://Scenes/UI/Settings.gd" id="2_ej6yy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bina8"]
+bg_color = Color(0.29219002, 0.29219005, 0.29218993, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lhejj"]
+bg_color = Color(0.5254902, 0.65882355, 0.21960784, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c8dc5"]
+bg_color = Color(0.5245014, 0.6576663, 0.21893, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hj641"]
+bg_color = Color(0.6394985, 0.17797273, 0.23356998, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 2
+
+[node name="MainControlPanel" type="CanvasLayer"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 640.0
+offset_bottom = 368.0
+color = Color(0.61745477, 0.61745477, 0.6174547, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect"]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 368.0
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="NewSession" type="Button" parent="ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_bina8")
+text = "Новый сеанс"
+script = ExtResource("1_fjp28")
+
+[node name="Library" type="Button" parent="ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_lhejj")
+text = "Библеотека"
+
+[node name="Settings" type="Button" parent="ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_c8dc5")
+text = "Настройки"
+script = ExtResource("2_ej6yy")
+
+[node name="Exit" type="Button" parent="ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_hj641")
+text = "Выход"
+script = ExtResource("2_bina8")

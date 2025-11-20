@@ -1,0 +1,105 @@
+[gd_scene load_steps=9 format=3 uid="uid://i64u5k8g042k"]
+
+[ext_resource type="Script" uid="uid://ddehrmqh55myq" path="res://Scenes/UI/new_session.gd" id="1_i6032"]
+[ext_resource type="Script" uid="uid://culdyn3fsppeg" path="res://Scenes/UI/exit.gd" id="2_v8314"]
+[ext_resource type="Script" uid="uid://crg0peruqc1le" path="res://Scenes/UI/safe_place.gd" id="2_yjcmp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i6032"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bina8"]
+bg_color = Color(0.5254902, 0.65882355, 0.21960784, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c8dc5"]
+bg_color = Color(0.5245014, 0.6576663, 0.21893, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lhejj"]
+bg_color = Color(0.5254902, 0.65882355, 0.21960784, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hj641"]
+bg_color = Color(0.6394985, 0.17797273, 0.23356998, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 2
+
+[node name="PauseMenuPanel" type="CanvasLayer"]
+layer = 2
+
+[node name="PanelBackground" type="ColorRect" parent="."]
+visibility_layer = 2
+offset_right = 640.0
+offset_bottom = 368.0
+color = Color(0.61745477, 0.61745477, 0.6174547, 1)
+
+[node name="Title" type="Label" parent="PanelBackground"]
+visibility_layer = 2
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -47.0
+offset_top = 16.0
+offset_right = 47.0
+offset_bottom = 61.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_i6032")
+text = "Пауза"
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelBackground"]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 368.0
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelBackground/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="EMDR" type="Button" parent="PanelBackground/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_bina8")
+text = "EMDR
+"
+script = ExtResource("1_i6032")
+
+[node name="SafePlace" type="Button" parent="PanelBackground/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_c8dc5")
+text = "Безопасное место"
+script = ExtResource("2_yjcmp")
+
+[node name="Settings" type="Button" parent="PanelBackground/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_lhejj")
+text = "Настройки"
+
+[node name="Exit" type="Button" parent="PanelBackground/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_hj641")
+text = "Выход"
+script = ExtResource("2_v8314")

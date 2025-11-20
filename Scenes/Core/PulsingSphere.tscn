@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://bb5ry6yjhmo7w"]
+
+[ext_resource type="Script" uid="uid://cyw5qxmf742u5" path="res://Scenes/Core/pulsing_sphere.gd" id="1_sebdk"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_814q6"]
+
+[sub_resource type="Animation" id="Animation_sebdk"]
+resource_name = "pulse"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "scale_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0.033333335, 1, 0.8, 0.8, 0.8, 1.1, 1, 1.2, 1.2, 1.2, 1.9666667, 1, 0.8, 0.8, 0.8)
+
+[sub_resource type="Animation" id="Animation_4tkcl"]
+length = 0.001
+tracks/0/type = "scale_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 1, 1, 1)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6vigi"]
+_data = {
+&"RESET": SubResource("Animation_4tkcl"),
+&"pulse": SubResource("Animation_sebdk")
+}
+
+[node name="PulsingSpheres" type="Node3D"]
+script = ExtResource("1_sebdk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_814q6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MeshInstance3D"]
+libraries = {
+&"": SubResource("AnimationLibrary_6vigi")
+}
