@@ -4,8 +4,7 @@ var settings_emdr: Control
 var is_panel_visible: bool = false
 
 func _ready() -> void:
-	# Пробуем разные пути к узлу
-	settings_emdr = $SettingsEMDR  # Прямой потомок
+	# Пробуем разные пути к уз
 	
 	# Если не найден, пробуем другие пути
 	if not settings_emdr:

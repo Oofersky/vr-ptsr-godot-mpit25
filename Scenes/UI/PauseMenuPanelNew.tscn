@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://by1245jgu484j"]
+[gd_scene load_steps=10 format=3 uid="uid://by1245jgu484j"]
 
 [ext_resource type="Script" uid="uid://dxbhsm63k4m0y" path="res://Scenes/UI/tspserver.gd" id="1_iayjs"]
 [ext_resource type="PackedScene" uid="uid://dtr80we1letf0" path="res://SettingsEMDR.tscn" id="5_iayjs"]
 [ext_resource type="Texture2D" uid="uid://vl74tix883uf" path="res://Pictures/Group 1.png" id="7_j2aw5"]
 [ext_resource type="Texture2D" uid="uid://c6m5aicbpw7oc" path="res://Pictures/щит.png" id="8_yidxb"]
 [ext_resource type="Texture2D" uid="uid://7btru8q6ljqs" path="res://Pictures/емдр.png" id="9_e456i"]
+[ext_resource type="PackedScene" uid="uid://dxhofrahd0123" path="res://SUD.tscn" id="9_rs7uh"]
 [ext_resource type="Texture2D" uid="uid://76ivxrr2kvgm" path="res://Pictures/безопасное место.png" id="10_7uim4"]
 [ext_resource type="Texture2D" uid="uid://c81og7bp1k6wi" path="res://Pictures/Экстренный.png" id="11_7p1aa"]
 [ext_resource type="Script" uid="uid://brje3pyo84mki" path="res://Scenes/UI/SAFE.gd" id="11_yidxb"]
@@ -56,3 +57,10 @@ offset_right = 767.0
 offset_bottom = 961.0
 scale = Vector2(0.2, 0.198)
 texture_normal = ExtResource("9_e456i")
+
+[node name="SettingsEMDR2" parent="." instance=ExtResource("9_rs7uh")]
+visible = false
+offset_left = -4.0
+offset_top = 32.0
+offset_right = 36.0
+offset_bottom = 72.0

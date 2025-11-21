@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Новый игровой проект"
-run/main_scene="uid://bo1qx6cmek6i"
+run/main_scene="uid://dc7sekvpyym5c"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://icon.svg"
 
@@ -20,7 +20,7 @@ config/icon="res://icon.svg"
 XrSimulator="*res://addons/xr-simulator/XRSimulator.tscn"
 XRToolsUserSettings="*res://addons/godot-xr-tools/user_settings/user_settings.gd"
 XRToolsRumbleManager="*res://addons/godot-xr-tools/rumble/rumble_manager.gd"
-SessionManagers="*res://SessionManagers.gd"
+MjpegStreamer="*res://MJPEG_Streamer.gd"
 
 [display]
 

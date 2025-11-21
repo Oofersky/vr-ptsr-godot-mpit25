@@ -3,6 +3,7 @@ extends CanvasLayer
 var paused_nodes = {}
 var is_paused = false
 var dark_screen: ColorRect
+var sud_instance: Node = null  # Для хранения экземпляра сцены SUD
 
 # TCP-сервер переменные
 var _server: TCPServer
@@ -104,16 +105,32 @@ func toggle_pause():
 	if is_paused:
 		hide_dark_screen()
 		resume_world()
+		# Удаляем сцену SUD при снятии паузы
+		if sud_instance:
+			sud_instance.queue_free()
+			sud_instance = null
 		# Скрываем и блокируем мышку при возобновлении игры
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	else:
 		pause_world()
 		show_dark_screen()
+		# Загружаем и показываем сцену SUD при паузе
+		load_sud_scene()
 		# Показываем и разблокируем мышку при паузе
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
 	is_paused = !is_paused
 	print("Пауза ", "включена" if is_paused else "выключена")
+
+func load_sud_scene():
+	# Загружаем и создаем экземпляр сцены SUD
+	var sud_scene = load("res://SUD.tscn")
+	if sud_scene:
+		sud_instance = sud_scene.instantiate()
+		add_child(sud_instance)
+		print("Сцена SUD загружена и добавлена")
+	else:
+		push_error("Не удалось загрузить сцену SUD.tscn")
 
 func create_dark_screen():
 	# Создаем затемняющий фон
