@@ -10,11 +10,26 @@ var dark_screen: ColorRect
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	
+	add_to_group("pause_menu")
+	
 	if UI is CanvasLayer:
 		UI.layer = 2
 	else:
 		push_warning("UI должен быть CanvasLayer!")
 	create_dark_screen()
+
+
+func toggle_pause_remote():
+	if not is_animating:
+		visible = !visible
+		if visible:
+			pause_world()
+			await show_dark_screen()
+			print("Пауза включена через сервер")
+		else:
+			await hide_dark_screen()
+			print("Пауза выключена через сервер")
 
 func create_dark_screen():
 	var canvas_layer = CanvasLayer.new()
@@ -33,14 +48,7 @@ func create_dark_screen():
 
 func _input(event):
 	if event.is_action_pressed("pause_game") and not is_animating:
-		visible = !visible
-		if visible:
-			pause_world()
-			await show_dark_screen()
-			print("Пауза включена")
-		else:
-			await hide_dark_screen()
-			print("Пауза выключена")
+		toggle_pause_remote()
 
 func show_dark_screen():
 	is_animating = true

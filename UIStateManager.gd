@@ -38,8 +38,6 @@ func _ready() -> void:
 	_find_xr_ui_viewport()
 	
 	# Подписываемся на глобальные события
-	EventBus.connect("request_safe_place_picker", Callable(self, "_on_safe_place_picker_requested"))
-	EventBus.connect("request_settings_menu", Callable(self, "_on_settings_menu_requested"))
 	
 	print("XR UI State Manager initialized")
 

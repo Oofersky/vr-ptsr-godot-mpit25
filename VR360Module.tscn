@@ -1,8 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://dc7sekvpyym5c"]
+[gd_scene load_steps=18 format=3 uid="uid://dc7sekvpyym5c"]
 
 [ext_resource type="PackedScene" uid="uid://bw5r4anhcs586" path="res://Scenes/Player.tscn" id="1_rr2vk"]
 [ext_resource type="Script" uid="uid://dc83r4qg5m6v3" path="res://VRVideoPlayer.gd" id="1_vrmp8"]
-[ext_resource type="PackedScene" uid="uid://b7nnb0g110wm6" path="res://Scenes/Core/PauseMenuScene.tscn" id="3_eq7qw"]
 [ext_resource type="PackedScene" uid="uid://xc56y3kn245y" path="res://Scenes/UI/SelectSafePlaceMenuScene.tscn" id="4_i1ftf"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_vrmp8"]
@@ -65,12 +64,13 @@ script = ExtResource("1_vrmp8")
 [node name="Player" parent="." groups=["player"] instance=ExtResource("1_rr2vk")]
 
 [node name="Sphere" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.02956158, 0, 0.999563, 0, 1, 0, -0.999563, 0, 0.02956158, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_eq7qw")
 mesh = SubResource("SphereMesh_i1ftf")
 
 [node name="VideoViewport" type="SubViewport" parent="."]
 disable_3d = true
-size = Vector2i(1280, 720)
+size = Vector2i(3280, 1980)
 render_target_update_mode = 4
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="VideoViewport"]
@@ -99,9 +99,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_h25dl")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1694336, -0.27754664, -1.0240479)
 shape = SubResource("BoxShape3D_bk8ei")
-
-[node name="PauseMenuScene" parent="." instance=ExtResource("3_eq7qw")]
-visible = false
 
 [node name="SelectSafePlaceMenuScene" parent="." instance=ExtResource("4_i1ftf")]
 visible = false

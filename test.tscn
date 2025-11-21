@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://cgpilmul7bcxs"]
+
+[ext_resource type="Script" uid="uid://cgljl6weh1nij" path="res://node_3d.gd" id="1_37kl0"]
+[ext_resource type="PackedScene" uid="uid://bw5r4anhcs586" path="res://Scenes/Player.tscn" id="2_8uh7m"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_6uqi0"]
+size = Vector2(10, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ppyta"]
+albedo_color = Color(0.5283112, 0.3844076, 0.18240984, 1)
+heightmap_enabled = true
+heightmap_scale = 7.157
+uv1_scale = Vector3(10, 10, 10)
+uv1_offset = Vector3(10, 10, 0)
+uv2_scale = Vector3(10, 10, 10)
+uv2_offset = Vector3(10, 10, 0)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ykrsh"]
+size = Vector3(15.030273, 0.30126953, 11.560303)
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_37kl0")
+
+[node name="Player" parent="." groups=["player"] instance=ExtResource("2_8uh7m")]
+
+[node name="Floor" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.019037008, 0)
+mesh = SubResource("PlaneMesh_6uqi0")
+surface_material_override/0 = SubResource("StandardMaterial3D_ppyta")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1694336, -0.27754664, -1.0240479)
+shape = SubResource("BoxShape3D_ykrsh")

@@ -21,9 +21,6 @@ XrSimulator="*res://addons/xr-simulator/XRSimulator.tscn"
 XRToolsUserSettings="*res://addons/godot-xr-tools/user_settings/user_settings.gd"
 XRToolsRumbleManager="*res://addons/godot-xr-tools/rumble/rumble_manager.gd"
 SessionManagers="*res://SessionManagers.gd"
-PauseManager="*res://PauseManager.gd"
-EventBus="*res://EventBus.gd"
-UiStateManager="*res://UIStateManager.gd"
 
 [display]
 
@@ -64,6 +61,7 @@ pause_game={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
 textures/vram_compression/import_etc2_astc=true
 

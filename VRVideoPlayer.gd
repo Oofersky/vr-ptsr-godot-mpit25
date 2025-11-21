@@ -4,7 +4,7 @@ extends Node3D
 
 func _ready():
 	# Загружаем видеофайл .ogv как ресурс
-	var video_stream_resource = load("res://sample_1280x720_surfing_with_audio.ogv")
+	var video_stream_resource = load("res://Scenes/Videos/war2.ogv")
 	
 	if video_stream_resource == null:
 		print("ОШИБКА: Не удалось загрузить видеоресурс!")
