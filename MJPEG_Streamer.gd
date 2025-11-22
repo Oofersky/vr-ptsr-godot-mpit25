@@ -40,17 +40,26 @@ func setup_network_timer():
 	update_network_status()
 
 func update_network_status():
+	# --- ИСПРАВЛЕНИЕ НАЧАЛО ---
+	# Проверяем, существует ли лейбл. Если сцена сменилась, он мог удалиться.
+	if not is_instance_valid(network_label):
+		# Пробуем создать его заново (для новой сцены)
+		setup_network_display()
+		# Если все еще не валиден (например, выходим из игры), просто прерываем функцию
+		if not is_instance_valid(network_label):
+			return
+	# --- ИСПРАВЛЕНИЕ КОНЕЦ ---
+
 	var ip = get_wifi_ip()
 	if ip and is_streaming:
 		var url = "http://" + ip + ":" + str(stream_port)
 		network_label.text = "✅ STREAM READY\nIP: " + ip + "\nPort: " + str(stream_port) + "\nURL: " + url
-		print("Stream available at: ", url)
+		# print уберем, чтобы не спамил в консоль каждые 3 секунды, или оставим по желанию
+		# print("Stream available at: ", url) 
 	elif not is_streaming:
 		network_label.text = "❌ FIREWALL BLOCKED\n\nPort " + str(stream_port) + " is blocked\nTrying different ports..."
-		print("Firewall blocking port ", stream_port)
 	else:
 		network_label.text = "❌ NO WIFI NETWORK\n\nConnect to WiFi to stream"
-		print("No WiFi network detected")
 
 func try_start_server():
 	# Пытаемся запустить сервер на разных портах

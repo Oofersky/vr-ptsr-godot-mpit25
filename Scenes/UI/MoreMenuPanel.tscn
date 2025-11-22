@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://by1245jgu484j"]
+[gd_scene load_steps=7 format=3 uid="uid://by1245jgu484j"]
 
-[ext_resource type="PackedScene" uid="uid://dtr80we1letf0" path="res://SettingsEMDR.tscn" id="2_u21p6"]
+[ext_resource type="Texture2D" uid="uid://vl74tix883uf" path="res://Pictures/Group 1.png" id="3_77tcd"]
 [ext_resource type="Texture2D" uid="uid://c81og7bp1k6wi" path="res://Pictures/Экстренный.png" id="4_lkcb5"]
 [ext_resource type="Texture2D" uid="uid://c6m5aicbpw7oc" path="res://Pictures/щит.png" id="5_wu5a7"]
-[ext_resource type="Script" uid="uid://bqmolyt41hte5" path="res://Scenes/UI/emdr_button.gd" id="6_1ve77"]
 [ext_resource type="Script" uid="uid://cqt8c5udrlawd" path="res://Scenes/UI/menu_close_button.gd" id="6_hgjvs"]
 [ext_resource type="Script" uid="uid://brje3pyo84mki" path="res://Scenes/UI/SAFE.gd" id="6_um3hg"]
 [ext_resource type="Texture2D" uid="uid://7btru8q6ljqs" path="res://Pictures/емдр.png" id="7_xegns"]
@@ -15,9 +14,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="SettingsEMDR" parent="." instance=ExtResource("2_u21p6")]
-layout_mode = 0
 
 [node name="FastExitButton" type="TextureButton" parent="."]
 layout_mode = 0
@@ -46,7 +42,6 @@ offset_right = 763.0
 offset_bottom = 959.0
 scale = Vector2(0.2, 0.198)
 texture_normal = ExtResource("7_xegns")
-script = ExtResource("6_1ve77")
 
 [node name="MenuCloseButton" type="TextureButton" parent="."]
 layout_mode = 0
@@ -55,5 +50,5 @@ offset_top = 22.0
 offset_right = 769.0
 offset_bottom = 689.0
 scale = Vector2(0.2, 0.198)
-texture_normal = ExtResource("5_wu5a7")
+texture_normal = ExtResource("3_77tcd")
 script = ExtResource("6_hgjvs")

@@ -1,15 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://brg0h1iaifs4o"]
+[gd_scene load_steps=7 format=3 uid="uid://brg0h1iaifs4o"]
 
 [ext_resource type="Script" uid="uid://c2tdihw8rrcxe" path="res://ui_manager.gd" id="1_g6l6n"]
 [ext_resource type="PackedScene" uid="uid://dfoh3g1du0swm" path="res://MainMenuPanel.tscn" id="2_qui0h"]
 [ext_resource type="PackedScene" uid="uid://by1245jgu484j" path="res://Scenes/UI/MoreMenuPanel.tscn" id="3_vrfts"]
 [ext_resource type="PackedScene" uid="uid://dxhofrahd0123" path="res://SUD.tscn" id="4_qui0h"]
+[ext_resource type="PackedScene" uid="uid://dtr80we1letf0" path="res://SettingsEMDR.tscn" id="5_vrfts"]
+[ext_resource type="PackedScene" uid="uid://c0ioe3y7j2u4g" path="res://BallRunUI.tscn" id="6_0mc3e"]
 
-[node name="UIManager" type="CanvasLayer" node_paths=PackedStringArray("main_menu_panel", "more_menu_panel", "sud_panel")]
+[node name="UIManager" type="CanvasLayer" node_paths=PackedStringArray("main_menu_panel", "more_menu_panel", "sud_panel", "emdr_settings_panel", "ball_run_panel")]
 script = ExtResource("1_g6l6n")
 main_menu_panel = NodePath("MainMenuPanel")
 more_menu_panel = NodePath("MoreMenuPanel")
 sud_panel = NodePath("SettingsEMDR")
+emdr_settings_panel = NodePath("SettingsEMDR2")
+ball_run_panel = NodePath("BallRun")
+safe_place_scene = "uid://cstmkckeby445"
 
 [node name="MainMenuPanel" parent="." instance=ExtResource("2_qui0h")]
 
@@ -17,4 +22,10 @@ sud_panel = NodePath("SettingsEMDR")
 visible = false
 
 [node name="SettingsEMDR" parent="." instance=ExtResource("4_qui0h")]
+visible = false
+
+[node name="SettingsEMDR2" parent="." instance=ExtResource("5_vrfts")]
+visible = false
+
+[node name="BallRun" parent="." instance=ExtResource("6_0mc3e")]
 visible = false
