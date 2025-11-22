@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://bw5r4anhcs586"]
 
-[ext_resource type="PackedScene" uid="uid://by1245jgu484j" path="res://Scenes/UI/PauseMenuPanelNew.tscn" id="1_52ee3"]
+[ext_resource type="PackedScene" uid="uid://brg0h1iaifs4o" path="res://UI.tscn" id="1_52ee3"]
 [ext_resource type="PackedScene" uid="uid://bkv43ec6chcf3" path="res://addons/godot-xr-tools/hands/scenes/collision/collision_hand_left.tscn" id="1_x3wgy"]
 [ext_resource type="PackedScene" uid="uid://bj1aas6kty3qx" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_physics_tac_glove_low.tscn" id="2_3smsa"]
 [ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="3_8erm5"]
@@ -16,7 +16,7 @@ radius = 0.25
 [node name="XRCamera3D" type="XRCamera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
 
-[node name="PauseMenuPanel" parent="XRCamera3D" groups=["player"] instance=ExtResource("1_52ee3")]
+[node name="CanvasLayer" parent="XRCamera3D" instance=ExtResource("1_52ee3")]
 
 [node name="LeftXRController3D" type="XRController3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, -0.5)

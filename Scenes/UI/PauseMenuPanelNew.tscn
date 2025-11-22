@@ -1,56 +1,44 @@
-[gd_scene load_steps=10 format=3 uid="uid://by1245jgu484j"]
+[gd_scene load_steps=6 format=3 uid="uid://ciuy0p8tawcd5"]
 
-[ext_resource type="Script" uid="uid://dxbhsm63k4m0y" path="res://Scenes/UI/tspserver.gd" id="1_iayjs"]
 [ext_resource type="PackedScene" uid="uid://dtr80we1letf0" path="res://SettingsEMDR.tscn" id="5_iayjs"]
-[ext_resource type="Texture2D" uid="uid://vl74tix883uf" path="res://Pictures/Group 1.png" id="7_j2aw5"]
 [ext_resource type="Texture2D" uid="uid://c6m5aicbpw7oc" path="res://Pictures/щит.png" id="8_yidxb"]
 [ext_resource type="Texture2D" uid="uid://7btru8q6ljqs" path="res://Pictures/емдр.png" id="9_e456i"]
-[ext_resource type="PackedScene" uid="uid://dxhofrahd0123" path="res://SUD.tscn" id="9_rs7uh"]
-[ext_resource type="Texture2D" uid="uid://76ivxrr2kvgm" path="res://Pictures/безопасное место.png" id="10_7uim4"]
 [ext_resource type="Texture2D" uid="uid://c81og7bp1k6wi" path="res://Pictures/Экстренный.png" id="11_7p1aa"]
 [ext_resource type="Script" uid="uid://brje3pyo84mki" path="res://Scenes/UI/SAFE.gd" id="11_yidxb"]
 
-[node name="PauseMenuPanel" type="CanvasLayer"]
-layer = 2
-script = ExtResource("1_iayjs")
+[node name="MoreMenuPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="SettingsEMDR" parent="." instance=ExtResource("5_iayjs")]
 visible = false
+layout_mode = 0
 
-[node name="TextureButton" type="TextureButton" parent="."]
-offset_left = 44.0
-offset_top = 35.0
-offset_right = 767.0
-offset_bottom = 702.0
-scale = Vector2(0.2, 0.198)
-texture_normal = ExtResource("7_j2aw5")
-
-[node name="TextureButton5" type="TextureButton" parent="."]
-offset_left = 2.0
-offset_top = 753.0
-offset_right = 1229.0
-offset_bottom = 1174.0
-scale = Vector2(0.3903785, 0.35782298)
-texture_normal = ExtResource("10_7uim4")
-
-[node name="TextureButton6" type="TextureButton" parent="."]
-offset_left = -22.0
-offset_top = 904.0
-offset_right = 1740.0
-offset_bottom = 1359.0
+[node name="FastExitButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = -14.000002
+offset_top = 948.0
+offset_right = 1748.0
+offset_bottom = 1403.0
 scale = Vector2(0.4000009, 0.36000118)
 texture_normal = ExtResource("11_7p1aa")
 
-[node name="TextureButton2" type="TextureButton" parent="."]
-offset_left = 44.0
-offset_top = 164.0
-offset_right = 767.0
-offset_bottom = 831.0
+[node name="SafePlaceButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 157.00005
+offset_right = 769.0
+offset_bottom = 824.00006
 scale = Vector2(0.2, 0.198)
 texture_normal = ExtResource("8_yidxb")
 script = ExtResource("11_yidxb")
 
-[node name="TextureButton3" type="TextureButton" parent="."]
+[node name="EMDRButton" type="TextureButton" parent="."]
+layout_mode = 0
 offset_left = 44.0
 offset_top = 294.0
 offset_right = 767.0
@@ -58,9 +46,12 @@ offset_bottom = 961.0
 scale = Vector2(0.2, 0.198)
 texture_normal = ExtResource("9_e456i")
 
-[node name="SettingsEMDR2" parent="." instance=ExtResource("9_rs7uh")]
-visible = false
-offset_left = -4.0
-offset_top = 32.0
-offset_right = 36.0
-offset_bottom = 72.0
+[node name="MenuCloseButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 22.0
+offset_right = 769.0
+offset_bottom = 689.0
+scale = Vector2(0.2, 0.198)
+texture_normal = ExtResource("8_yidxb")
+script = ExtResource("11_yidxb")

@@ -62,6 +62,7 @@ size = Vector3(15.030273, 0.30126953, 11.560303)
 script = ExtResource("1_vrmp8")
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("1_rr2vk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8755593, 0)
 
 [node name="Sphere" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.02956158, 0, 0.999563, 0, 1, 0, -0.999563, 0, 0.02956158, 0, 0, 0)
@@ -87,7 +88,7 @@ mesh = SubResource("QuadMesh_eq7qw")
 surface_material_override/0 = SubResource("StandardMaterial3D_fjf70")
 
 [node name="Floor" type="StaticBody3D" parent="."]
-transform = Transform3D(0.110506855, 0, 0, 0, 1, 0, 0, 0, 0.13049352, 0, 0, 0)
+transform = Transform3D(0.110506855, 0, 0, 0, 1, 0, 0, 0, 0.13049352, 0, 1.9999661, 0)
 visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
@@ -102,3 +103,6 @@ shape = SubResource("BoxShape3D_bk8ei")
 
 [node name="SelectSafePlaceMenuScene" parent="." instance=ExtResource("4_i1ftf")]
 visible = false
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.99994206, 0, 0.0107684145, 0, 1, 0, -0.0107684145, 0, -0.99994206, 0, 0, 2.3398018)

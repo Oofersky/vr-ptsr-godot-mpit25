@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://dxhofrahd0123"]
+[gd_scene load_steps=10 format=3 uid="uid://dxhofrahd0123"]
 
 [ext_resource type="Texture2D" uid="uid://2dtnmx7fh4l5" path="res://Pictures/Rectangle 12 (1).png" id="1_n5d2n"]
 [ext_resource type="Texture2D" uid="uid://b6gnkkhof0bgk" path="res://Pictures/просто.png" id="3_n5d2n"]
+[ext_resource type="Script" uid="uid://krwmfm70t60g" path="res://texture_button.gd" id="4_n0rtr"]
 [ext_resource type="Script" uid="uid://cneksfiydk6p2" path="res://slider.gd" id="4_s3ste"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d7j03"]
@@ -33,10 +34,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 532.0
-offset_top = 138.0
-offset_right = 572.0
-offset_bottom = 178.0
+offset_left = 472.0
+offset_top = 262.0
+offset_right = 512.0
+offset_bottom = 302.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(24.110188, 13.534625)
@@ -44,10 +45,10 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_d7j03")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0
-offset_left = 720.0
-offset_top = 484.0
-offset_right = 1360.0
-offset_bottom = 524.0
+offset_left = 660.0
+offset_top = 608.0
+offset_right = 1300.0
+offset_bottom = 648.0
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_right = 80
 
@@ -56,25 +57,25 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 724.0
-offset_top = 288.0
-offset_right = 1316.0
-offset_bottom = 324.0
+offset_left = 664.0
+offset_top = 412.0
+offset_right = 1256.0
+offset_bottom = 448.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 26
 text = "Оцените ваше состояние на данный момент"
 
-[node name="Counter" type="Label" parent="."]
+[node name="Counter" type="Label" parent="." groups=["EMDR_Counters"]]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 986.0
-offset_top = 339.0
-offset_right = 1023.0
-offset_bottom = 427.0
+offset_left = 926.0
+offset_top = 463.0
+offset_right = 963.0
+offset_bottom = 551.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 64
@@ -82,10 +83,10 @@ text = "0"
 
 [node name="Pool" type="Panel" parent="."]
 layout_mode = 0
-offset_left = 711.0
-offset_top = 471.0
-offset_right = 1251.0
-offset_bottom = 511.0
+offset_left = 651.0
+offset_top = 595.0
+offset_right = 1191.0
+offset_bottom = 635.0
 scale = Vector2(1.1186198, 2.4845595)
 theme_override_styles/panel = SubResource("StyleBoxTexture_n0rtr")
 
@@ -109,23 +110,24 @@ script = ExtResource("4_s3ste")
 
 [node name="TextureButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 849.99994
-offset_top = 569.0
-offset_right = 2077.0
-offset_bottom = 990.0
+offset_left = 789.99994
+offset_top = 693.0
+offset_right = 2017.0
+offset_bottom = 1114.0
 scale = Vector2(0.2800002, 0.24000001)
 theme = SubResource("Theme_pckke")
 texture_normal = ExtResource("3_n5d2n")
+script = ExtResource("4_n0rtr")
 
 [node name="Label2" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 943.0
-offset_top = 575.0
-offset_right = 1535.0
-offset_bottom = 611.0
+offset_left = 883.0
+offset_top = 699.0
+offset_right = 1475.0
+offset_bottom = 735.0
 grow_horizontal = 2
 scale = Vector2(0.67999756, 1.2652394)
 theme_override_font_sizes/font_size = 26

@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://brg0h1iaifs4o"]
+
+[ext_resource type="Script" uid="uid://c2tdihw8rrcxe" path="res://ui_manager.gd" id="1_g6l6n"]
+[ext_resource type="PackedScene" uid="uid://dfoh3g1du0swm" path="res://MainMenuPanel.tscn" id="2_qui0h"]
+[ext_resource type="PackedScene" uid="uid://by1245jgu484j" path="res://Scenes/UI/MoreMenuPanel.tscn" id="3_vrfts"]
+[ext_resource type="PackedScene" uid="uid://dxhofrahd0123" path="res://SUD.tscn" id="4_qui0h"]
+
+[node name="UIManager" type="CanvasLayer" node_paths=PackedStringArray("main_menu_panel", "more_menu_panel", "sud_panel")]
+script = ExtResource("1_g6l6n")
+main_menu_panel = NodePath("MainMenuPanel")
+more_menu_panel = NodePath("MoreMenuPanel")
+sud_panel = NodePath("SettingsEMDR")
+
+[node name="MainMenuPanel" parent="." instance=ExtResource("2_qui0h")]
+
+[node name="MoreMenuPanel" parent="." instance=ExtResource("3_vrfts")]
+visible = false
+
+[node name="SettingsEMDR" parent="." instance=ExtResource("4_qui0h")]
+visible = false
